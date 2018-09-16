@@ -17,12 +17,12 @@
         <Button Content="Play" HorizontalAlignment="Left" Margin="10,597,0,0" VerticalAlignment="Top" Height="63" Width="640" Click="PlayButtonClick"/>
         <Image x:Name="imageBox_Play" Source="Assets/shot.jpg" HorizontalAlignment="Left" Height="480" Margin="10,112,0,0" VerticalAlignment="Top" Width="640"/>
         <Image x:Name="imageBox_Snap" Source="Assets/shot.jpg" HorizontalAlignment="Left" Height="480" Margin="681,112,0,0" VerticalAlignment="Top" Width="640" Grid.ColumnSpan="2"/>
-        <ProgressBar x:Name="_appleStaple" HorizontalAlignment="Left" Height="36" Margin="684,71,0,0" VerticalAlignment="Top" Width="317" Maximum="1" SmallChange="0.01"/>
-        <ProgressBar x:Name="_bananaStaple" HorizontalAlignment="Left" Height="36" Margin="1006,71,0,0" VerticalAlignment="Top" Width="305" Maximum="1" SmallChange="0.01" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="_appleTextBox" HorizontalAlignment="Left" Margin="681,39,0,0" Text="Apple" VerticalAlignment="Top"/>
-        <TextBox x:Name="_bananaTextBox" HorizontalAlignment="Left" Margin="1006,39,0,0" Text="Banana" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Button x:Name="_appleButton" Content="Apple" HorizontalAlignment="Left" Margin="684,665,0,0" VerticalAlignment="Top" Height="55" Width="317" Click="AppleButtonClick"/>
-        <Button x:Name="_bananaButton" Content="Banana" HorizontalAlignment="Left" Margin="1006,665,0,0" VerticalAlignment="Stretch" Click="BananaButtonClick" Width="315" Grid.ColumnSpan="2"/>
+        <ProgressBar x:Name="_alt1Staple" HorizontalAlignment="Left" Height="36" Margin="684,71,0,0" VerticalAlignment="Top" Width="317" Maximum="1" SmallChange="0.01"/>
+        <ProgressBar x:Name="_alt2Staple" HorizontalAlignment="Left" Height="36" Margin="1006,71,0,0" VerticalAlignment="Top" Width="305" Maximum="1" SmallChange="0.01" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="_alt1TextBox" HorizontalAlignment="Left" Margin="681,39,0,0" Text="Apple" VerticalAlignment="Top"/>
+        <TextBox x:Name="_alt2TextBox" HorizontalAlignment="Left" Margin="1006,39,0,0" Text="Banana" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="_appleButton" Content="Apple" HorizontalAlignment="Left" Margin="684,665,0,0" VerticalAlignment="Top" Height="55" Width="317" Click="Alt1ButtonClick"/>
+        <Button x:Name="_bananaButton" Content="Banana" HorizontalAlignment="Left" Margin="1006,665,0,0" VerticalAlignment="Stretch" Click="Alt2ButtonClick" Width="315" Grid.ColumnSpan="2"/>
         <TextBox x:Name="_alt1ResultBox" HorizontalAlignment="Left" Margin="927,39,0,0" Text="0" VerticalAlignment="Top" Width="12"/>
         <TextBox x:Name="_alt2ResultBox" HorizontalAlignment="Left" Margin="246,39,0,0" Text="0" VerticalAlignment="Top" Width="12" Grid.Column="1"/>
     </Grid>

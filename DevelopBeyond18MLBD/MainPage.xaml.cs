@@ -26,8 +26,8 @@ namespace DevelopBeyond18MLBD
         string _uripath = @"http://192.168.0.130:8080/shot.jpg";
         int _framerate = 10;//Hz
 
-        //BananaramaModel _model = new BananaramaModel();
-        //Bananarama _inputData = new Bananarama();
+        //DB18Model _model = new DB18Model();
+        //DB18ModelInput _inputData = new DB18ModelInput();
 
 
         public MainPage()
@@ -42,12 +42,12 @@ namespace DevelopBeyond18MLBD
         private async Task LoadModelAsync()
         {
             // Load the .onnx file
-            Uri uri = new Uri($"ms-appx:///Assets/Bananarama.onnx");
+            Uri uri = new Uri($"ms-appx:///Assets/DB18.onnx");
             var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            _model = await BananaramaModel.CreateBananaramaModel(file);
-        }*/
+            _model = await DB18Model.CreateDB18Model(file);
+        }
         
-        /*
+        
         async void EvalSnappedImage()
         {
             //Get a frame for input
@@ -56,20 +56,20 @@ namespace DevelopBeyond18MLBD
             //Inference using model and input data
             var evalOutput = await _model.EvaluateAsync(_inputData);
             // Do something with the model output
-            var appleProbability = evalOutput.loss.First(x => x.Key == "apple");
-            var bananaProbability = evalOutput.loss.First(x => x.Key == "banana");
-            _appleTextBox.Text = appleProbability.Key + ": " + Math.Round(appleProbability.Value, 2);
-            _bananaTextBox.Text = bananaProbability.Key + ": " + Math.Round(bananaProbability.Value, 2);
-            _appleStaple.Value = appleProbability.Value;
-            _bananaStaple.Value = bananaProbability.Value;
+            var Alt1Probability = evalOutput.loss.First(x => x.Key == "Alt1");
+            var Alt2Probability = evalOutput.loss.First(x => x.Key == "Alt2");
+            _alt1TextBox.Text = Alt1Probability.Key + ": " + Math.Round(Alt1Probability.Value, 2);
+            _alt2TextBox.Text = Alt2Probability.Key + ": " + Math.Round(Alt2Probability.Value, 2);
+            _alt1Staple.Value = Alt1Probability.Value;
+            _alt2Staple.Value = Alt2Probability.Value;
 
-            if (appleProbability.Value > 0.8)
+            if (Alt1Probability.Value > 0.8)
             {
-                AddApple();
+                AddAlt1();
             }
-            else if (bananaProbability.Value > 0.8)
+            else if (Alt2Probability.Value > 0.8)
             {
-                AddBanana();
+                AddAlt2();
             }
         }
         */
@@ -82,13 +82,13 @@ namespace DevelopBeyond18MLBD
 
         #region helper functions
 
-        private void AddBanana()
+        private void AddAlt2()
         {
             Int32 val2 = (Int32.Parse(_alt2ResultBox.Text)) + 1;
             _alt2ResultBox.Text = (val2).ToString();
         }
 
-        private void AddApple()
+        private void AddAlt1()
         {
             Int32 val1 = (Int32.Parse(_alt1ResultBox.Text)) + 1;
             _alt1ResultBox.Text = (val1).ToString();
@@ -190,18 +190,18 @@ namespace DevelopBeyond18MLBD
             }
         }
 
-        private void AppleButtonClick(object sender, RoutedEventArgs e)
+        private void Alt1ButtonClick(object sender, RoutedEventArgs e)
         {
-            _appleStaple.Value = 1;
-            _bananaStaple.Value = 0;
-            AddApple();
+            _alt1Staple.Value = 1;
+            _alt2Staple.Value = 0;
+            AddAlt1();
         }
 
-        private void BananaButtonClick(object sender, RoutedEventArgs e)
+        private void Alt2ButtonClick(object sender, RoutedEventArgs e)
         {
-            _appleStaple.Value = 0;
-            _bananaStaple.Value = 1;
-            AddBanana();
+            _alt1Staple.Value = 0;
+            _alt2Staple.Value = 1;
+            AddAlt2();
         }
 
         #endregion
