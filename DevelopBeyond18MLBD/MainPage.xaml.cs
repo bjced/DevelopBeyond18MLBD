@@ -26,17 +26,20 @@ namespace DevelopBeyond18MLBD
         string _uripath = @"http://192.168.0.130:8080/shot.jpg";
         int _framerate = 10;//Hz
 
+
+        //Select the labels to use
+        string alt1Name = "Alt1";
+        string alt2Name = "Alt2";
+
         //DB18Model _model = new DB18Model();
         //DB18ModelInput _inputData = new DB18ModelInput();
-
 
         public MainPage()
         {
             this.InitializeComponent();
             //LoadModelAsync();
-            SetupBackgroundWorker();
+            Setup();
         }
-
 
         /*
         private async Task LoadModelAsync()
@@ -56,8 +59,8 @@ namespace DevelopBeyond18MLBD
             //Inference using model and input data
             var evalOutput = await _model.EvaluateAsync(_inputData);
             // Do something with the model output
-            var Alt1Probability = evalOutput.loss.First(x => x.Key == "Alt1");
-            var Alt2Probability = evalOutput.loss.First(x => x.Key == "Alt2");
+            var Alt1Probability = evalOutput.loss.First(x => x.Key == alt1Name);
+            var Alt2Probability = evalOutput.loss.First(x => x.Key == alt2Name);
             _alt1TextBox.Text = Alt1Probability.Key + ": " + Math.Round(Alt1Probability.Value, 2);
             _alt2TextBox.Text = Alt2Probability.Key + ": " + Math.Round(Alt2Probability.Value, 2);
             _alt1Staple.Value = Alt1Probability.Value;
@@ -154,13 +157,17 @@ namespace DevelopBeyond18MLBD
             return softwareBitmap;
         }
 
-        private void SetupBackgroundWorker()
+        private void Setup()
         {
             // Setup background worker
             _bw.DoWork += BackgroundWorkerDoWork;
             _bw.ProgressChanged += BackgroundWorkerProgressChanged;
             _bw.WorkerReportsProgress = true;
             _bw.WorkerSupportsCancellation = true;
+            _appleButton.Content = alt1Name;
+            _bananaButton.Content = alt2Name;
+            _alt1TextBox.Text = alt1Name;
+            _alt2TextBox.Text = alt2Name;
         }
         private void BackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
         {
